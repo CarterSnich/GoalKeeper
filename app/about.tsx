@@ -1,6 +1,6 @@
 import Text from "@/components/text";
 import { useThemeColor } from "@/hooks/useThemeColor";
-import { nativeBuildVersion } from "expo-application";
+import { nativeApplicationVersion } from "expo-application";
 import { router } from "expo-router";
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 
@@ -22,7 +22,9 @@ function About() {
             />
           </View>
           {/* App name */}
-          <Text style={styles.appName}>GoalKeeper {nativeBuildVersion}</Text>
+          <Text style={styles.appName}>
+            GoalKeeper {nativeApplicationVersion}
+          </Text>
           {/* Developer */}
           <Text>by CarterSnich</Text>
           {/* Disclaimer */}
