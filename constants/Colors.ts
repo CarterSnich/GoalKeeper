@@ -4,17 +4,17 @@
  */
 
 const PALETTE = {
-  50: "#eff4fe",
-  100: "#e3eafc",
-  200: "#ccd9f9",
-  300: "#b6c7f6",
-  400: "#8b9dee",
-  500: "#6f7ce5",
-  600: "#5357d8",
-  700: "#4446be",
-  800: "#3a3e99",
-  900: "#35397a",
-  950: "#1f2147",
+  50: "#fafafa",
+  100: "#f4f4f5",
+  200: "#e4e4e7",
+  300: "#d4d4d8",
+  400: "#a1a1aa",
+  500: "#71717a",
+  600: "#52525b",
+  700: "#3f3f46",
+  800: "#27272a",
+  900: "#18181b",
+  950: "#09090b",
 };
 
 export const Colors = {
@@ -26,6 +26,8 @@ export const Colors = {
     icon: PALETTE[500],
     tabIconDefault: PALETTE[500],
     tabIconSelected: PALETTE[700],
+    border: PALETTE[500],
+    borderActive: PALETTE[500],
   },
   dark: {
     text: PALETTE[50],
@@ -34,5 +36,7 @@ export const Colors = {
     icon: PALETTE[500],
     tabIconDefault: PALETTE[500],
     tabIconSelected: PALETTE[400],
+    border: PALETTE[500],
+    borderActive: PALETTE[100],
   },
 };

@@ -33,14 +33,14 @@ function BookPage() {
   const [isChaptersCollapsed, setIsChaptersCollapsed] = useState(true);
   const [loadingOverlayShown, setLoadingOverlayShown] = useState(true);
 
-  // for the loading overlay
+  // for the animating the loading overlay
   const opacity = useSharedValue(1.0);
   const opacityTimingConfig = {
     duration: 150,
     easing: Easing.linear,
   };
 
-  // for the book title text
+  // for the animating the book title
   const fontSize = useSharedValue(24);
   const fontSizetimingConfig = {
     duration: 300,
@@ -204,8 +204,16 @@ function BookPage() {
       </ScrollView>
 
       {/* Read button */}
-      <TouchableOpacity style={styles.readButton} onPress={readPdf}>
-        <Text style={styles.readButtonText}>Read</Text>
+      <TouchableOpacity
+        style={[
+          styles.readButton,
+          { backgroundColor: theme.text, borderColor: theme.border },
+        ]}
+        onPress={readPdf}
+      >
+        <Text style={[styles.readButtonText, { color: theme.background }]}>
+          Read
+        </Text>
       </TouchableOpacity>
 
       {/* Loading screen overlay */}
@@ -283,6 +291,7 @@ const styles = StyleSheet.create({
     maxHeight: 300,
     overflow: "hidden",
     gap: 8,
+    paddingBottom: 4,
   },
   chapterText: {
     fontSize: 16,
@@ -290,7 +299,7 @@ const styles = StyleSheet.create({
   },
 
   moreLess: {
-    bottom: 0,
+    bottom: -2,
     height: 64,
     width: "100%",
   },
@@ -322,12 +331,9 @@ const styles = StyleSheet.create({
   readButton: {
     margin: 16,
     borderRadius: 8,
-    borderColor: Colors[500],
-    borderWidth: 2,
     padding: 8,
   },
   readButtonText: {
-    color: Colors[500],
     textAlign: "center",
     fontSize: 20,
   },

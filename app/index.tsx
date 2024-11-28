@@ -52,6 +52,7 @@ function Index() {
             value={searchKey}
             onChangeText={setSearchKey}
             placeholder="Search..."
+            selectionColor={Colors[100]}
             placeholderTextColor={Colors[500]}
           />
           <TouchableOpacity
@@ -100,37 +101,42 @@ function Index() {
   );
 }
 
-const Item: ListRenderItem<BookEntry> = ({ item }) => (
-  <Link
-    href={{ pathname: "/book-page", params: { url: item.page_url } }}
-    push
-    asChild
-  >
-    <TouchableOpacity style={itemStyle.card}>
-      <Image
-        style={itemStyle.coverImage}
-        source={item.cover_url}
-        contentFit="cover"
-      />
-      <View style={itemStyle.textWrapper}>
-        <LinearGradient
-          start={{ x: 0, y: 0 }}
-          end={{ x: 0, y: 0.4 }}
-          colors={[
-            "transparent",
-            "rgba(83, 87, 216, 0.4)",
-            "rgba(83, 87, 216, 0.6)",
-            "rgba(83, 87, 216, 0.8)",
-          ]}
-          style={itemStyle.gradient}
+const Item: ListRenderItem<BookEntry> = ({ item }) => {
+  return (
+    <Link
+      href={{ pathname: "/book-page", params: { url: item.page_url } }}
+      push
+      asChild
+    >
+      <TouchableOpacity style={itemStyle.card}>
+        <Image
+          style={itemStyle.coverImage}
+          source={item.cover_url}
+          contentFit="cover"
         />
-        <Text style={[itemStyle.text, { color: Colors[50] }]} numberOfLines={2}>
-          {item.title}
-        </Text>
-      </View>
-    </TouchableOpacity>
-  </Link>
-);
+        <View style={itemStyle.textWrapper}>
+          <LinearGradient
+            start={{ x: 0, y: 0 }}
+            end={{ x: 0, y: 0.4 }}
+            colors={[
+              "transparent",
+              `${Colors[950]}66`,
+              `${Colors[950]}99`,
+              `${Colors[950]}CC`,
+            ]}
+            style={itemStyle.gradient}
+          />
+          <Text
+            style={[itemStyle.text, { color: Colors[50] }]}
+            numberOfLines={2}
+          >
+            {item.title}
+          </Text>
+        </View>
+      </TouchableOpacity>
+    </Link>
+  );
+};
 
 const styles = StyleSheet.create({
   screen: {
@@ -144,10 +150,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
-
   searchBar: {
     flex: 1,
-    borderWidth: 2,
+    borderWidth: StyleSheet.hairlineWidth,
     borderColor: Colors[500],
     borderRadius: 8,
     flexDirection: "row",
@@ -183,7 +188,7 @@ const itemStyle = StyleSheet.create({
   card: {
     width: "48%",
     borderRadius: 16,
-    borderWidth: 1,
+    borderWidth: StyleSheet.hairlineWidth,
     borderColor: Colors[200],
     overflow: "hidden",
   },
